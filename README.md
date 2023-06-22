@@ -5,11 +5,13 @@ Latest stable version is v1.14 or later, not v2.
 
 # ABOUT THIS CLONE
 
-The [current mattn version](https://github.com/mattn/go-sqlite3) is failing at runtime, with this error:
+The [current mattn version](https://github.com/mattn/go-sqlite3)
+is failing at runtime, with this error:
 
 `Binary was compiled with 'CGO_ENABLED=0', go-sqlite3 requires cgo to work. This is a stub`
 
-Well, it turns out that the problem is that it is using the obsoleted version of Go build tags. That is to say, it is using tags of the form
+It turns out that the problem is that it is using the obsoleted version
+of Go build tags. That is to say, it is using tags of the form
 
 `// +build cgo,foo`
   
