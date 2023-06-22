@@ -1,15 +1,25 @@
 go-sqlite3
 ==========
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/mattn/go-sqlite3.svg)](https://pkg.go.dev/github.com/mattn/go-sqlite3)
-[![GitHub Actions](https://github.com/mattn/go-sqlite3/workflows/Go/badge.svg)](https://github.com/mattn/go-sqlite3/actions?query=workflow%3AGo)
-[![Financial Contributors on Open Collective](https://opencollective.com/mattn-go-sqlite3/all/badge.svg?label=financial+contributors)](https://opencollective.com/mattn-go-sqlite3) 
-[![codecov](https://codecov.io/gh/mattn/go-sqlite3/branch/master/graph/badge.svg)](https://codecov.io/gh/mattn/go-sqlite3)
-[![Go Report Card](https://goreportcard.com/badge/github.com/mattn/go-sqlite3)](https://goreportcard.com/report/github.com/mattn/go-sqlite3)
-
 Latest stable version is v1.14 or later, not v2.
 
-~~**NOTE:** The increase to v2 was an accident. There were no major changes or features.~~
+# ABOUT THIS CLONE
+
+The [current mattn version](https://github.com/mattn/go-sqlite3) is failing at runtime, with this error:
+
+`Binary was compiled with 'CGO_ENABLED=0', go-sqlite3 requires cgo to work. This is a stub`
+
+Well, it turns out that the problem is that it is using the obsoleted version of Go build tags. That is to say, it is using tags of the form
+
+`// +build cgo,foo`
+  
+when it should be using tags of the form
+
+`//go:build cgo && foo`
+
+This repository fixes the problem. The original's MIT license is retained.
+
+The rest of this README is unchanged from the original.
 
 # Description
 
