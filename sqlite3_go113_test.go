@@ -3,7 +3,7 @@
 // Use of this source code is governed by an MIT-style
 // license that can be found in the LICENSE file.
 
-// +build go1.13,cgo
+//go:build go1.13 && cgo
 
 package sqlite3
 

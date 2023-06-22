@@ -1,5 +1,4 @@
 //go:build !cgo && upgrade && ignore
-// +build !cgo,upgrade,ignore
 
 package main
 
