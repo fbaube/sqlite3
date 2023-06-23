@@ -40,9 +40,9 @@ func (destConn *SQLiteConn) Backup(dest string, srcConn *SQLiteConn, src string)
 }
 
 // Step to backs up for one step. Calls the underlying `sqlite3_backup_step`
-// function.  This function returns a boolean indicating if the backup is done
-// and an error signalling any other error. Done is returned if the underlying
-// C function returns SQLITE_DONE (Code 101)
+// function.  This function returns a boolean indicating if the backup is
+// done and an error signalling any other error. Done is returned if the
+// underlying C function returns SQLITE_DONE (Code 101)
 func (b *SQLiteBackup) Step(p int) (bool, error) {
 	ret := C.sqlite3_backup_step(b.b, C.int(p))
 	if ret == C.SQLITE_DONE {

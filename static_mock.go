@@ -13,7 +13,10 @@ import (
 	"errors"
 )
 
-var errorMsg = errors.New("Binary was compiled with 'CGO_ENABLED=0', go-sqlite3 requires cgo to work. This is a stub")
+var errorMsg = errors.New(
+	"The DB driver binary was compiled with the build tag \n" +
+		"<< !cgo >> (i.e. CGO_ENABLED=0', but it requires cgo. \n" +
+		"This message is from a stub in static_mock.go")
 
 func init() {
 	sql.Register("sqlite3", &SQLiteDriver{})

@@ -19,18 +19,21 @@ import (
 // Can be used to control how many pages are available to be backed up.
 const testRowCount = 100
 
-// The maximum number of seconds after which the page-by-page backup is considered to have taken too long.
+// The maximum number of seconds after which the page-by-page backup
+// is considered to have taken too long.
 const usePagePerStepsTimeoutSeconds = 30
 
 // Test the backup functionality.
 func testBackup(t *testing.T, testRowCount int, usePerPageSteps bool) {
 	// This function will be called multiple times.
-	// It uses sql.Register(), which requires the name parameter value to be unique.
-	// There does not currently appear to be a way to unregister a registered driver, however.
+	// It uses sql.Register(), which requires the name parameter value
+	// to be unique. There does not currently appear to be a way to
+	// unregister a registered driver, however.
 	// So generate a database driver name that will likely be unique.
-	var driverName = fmt.Sprintf("sqlite3_testBackup_%v_%v_%v", testRowCount, usePerPageSteps, time.Now().UnixNano())
+	var driverName = fmt.Sprintf("sqlite3_testBackup_%v_%v_%v",
+		testRowCount, usePerPageSteps, time.Now().UnixNano())
 
-	// The driver's connection will be needed in order to perform the backup.
+	// The driver's connection will be needed for the backup.
 	driverConns := []*SQLiteConn{}
 	sql.Register(driverName, &SQLiteDriver{
 		ConnectHook: func(conn *SQLiteConn) error {
